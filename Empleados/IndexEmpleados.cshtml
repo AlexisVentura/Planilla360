@@ -1,0 +1,53 @@
+﻿@page
+@model Planilla360.Pages.Empleados.IndexEmpleadosModel
+@{
+    ViewData["Title"] = "Empeados";
+}
+<br/>
+<div class="text-center">
+    <h1 class="display-3">Lista de Empleados</h1>
+</div>
+
+<br />
+<!-- <h2>Lista de Clientes</h2> -->
+<a class="btn btn-primary btn-sm" href="/Clientes/Agregar">Nuevo Empleado</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>IdEmpleado</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo Electronico</th>
+            <th>Telefono</th>
+            <th>Puesto</th>
+            <th>Salario Base</th>
+            <th>Fecha Ingreso</th>
+            <th>Fecha Nacimiento</th>
+            <th>IdPuesto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tdbody>
+        <!--Recorremos la lista de objetos creada en el modelo -->
+        @foreach (var item in Model.listaEmpleados)
+        {
+            <tr>
+                <td>@item.IdEmpleado</td>
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.CorreoElectronico</td>
+                <td>@item.Telefono</td>
+                <td>@item.Puesto</td>
+                <td>@item.SalarioBase</td>
+                <td>@item.FechaIngreso</td>
+                <td>@item.FechaNacimiento</td>
+                <td>@item.IdPuesto</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="/Empleados?id=@item.IdEmpleado">Modificar</a>
+                    <a class="btn btn-danger btn-sm" href="/Index?id=@item.IdEmpleado">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tdbody>
+</table>
